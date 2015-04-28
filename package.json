@@ -1,0 +1,16 @@
+{
+  "name": "montyanderson-node",
+  "version": "1.0.0",
+  "description": "My personal website.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Monty Anderson",
+  "license": "MIT",
+  "private": "true",
+  "dependencies": {
+    "ect": "^0.5.9",
+    "express": "^4.12.3"
+  }
+}
