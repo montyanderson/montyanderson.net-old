@@ -1,0 +1,28 @@
+<% extend "layout" %>
+
+<div class="row"></div>
+
+<div class="row">
+	<a class="waves-effect waves-light btn" href="/"><i class="fa fa-arrow-left"></i> Back!</a>
+</div>
+
+<div class="row" id="git-projects">
+	<div class="progress">
+    	<div class="indeterminate"></div>
+  	</div>
+</div>
+
+<script>
+	getGithubRepos(function(render, repos) {
+		console.log(repos);
+
+		repos.forEach(function(repo) {
+			render(repo);
+			console.log(repo);
+		});
+	});
+</script>
+
+<div class="row">
+	<a class="waves-effect waves-light btn" href="/"><i class="fa fa-arrow-left"></i> Back!</a>
+</div>

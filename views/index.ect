@@ -1,10 +1,19 @@
 <% extend "layout" %>
 
+<!--About Me-->
+
 <div class="row">
-	<div class="col s12 m8">
+	<div class="col s8">
 		<h2 class="flow-text">
 			Hello! I build modern, scalable, web applications.
-			I've worked on 
+			Why don't you check out my <a href="/resume">resume</a>?
+		</h2>
+	</div>
+
+	<div class="col s4">
+		<h2 class="flow-text">
+			I'm the creator of <a href="http://blocks.montyanderson.net">LiveBlocks,
+			<a href="http://chat.montyanderson.net">anon-chat</a> and <a href="#">PartyTrak</a>.
 		</h2>
 	</div>
 
@@ -14,40 +23,20 @@
 	</div>
 </div>
 
-<div class="row" id="git-projects">Loading latest projects...</div>
+<!--Git Projects-->
 
-<script id="git-template" type="x-tmpl-mustache">
-	<div class="col s4">
-	 	<div class="card blue-grey darken-1">
-	            <div class="orange card-content white-text">
-	              <span class="card-title">{{name}}</span>
-	              <p>{{description}}</p>
-	            </div>
-
-	            <div class="card-action">
-	              <a href="{{html_url}}">Github</a>
-	              <a href="{{homepage}}">Homepage</a>
-	            </div>
-	    </div>
-	</div>
-</script>
+<div class="row" id="git-projects">
+	<div class="progress">
+    	<div class="indeterminate"></div>
+  	</div>
+</div>
 
 <script>
-	$.ajax({
-		url: "http://api.github.com/users/montyanderson/repos?sort=updated"
-	}).done(function(res) {
-		var render = function(data) {
-			if(!data.homepage) {
-				data.homepage = data.html_url;
-			}
-
-			$("#git-projects").append(Mustache.render($("#git-template").html(), data));
-		}
-
-		$("#git-projects").html("");
-
-		render(res[0]);
-		render(res[1]);
-		render(res[2]);
+	getGithubRepos(function(render, repos) {
+		render(repos[0]);
+		render(repos[1]);
+		render(repos[2]);
 	});
 </script>
+
+<a class="waves-effect waves-light btn" href="/git"><i class="fa fa-git"></i> View all projects!</a>

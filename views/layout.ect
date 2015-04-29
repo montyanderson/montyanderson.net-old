@@ -7,21 +7,88 @@
 		<meta charset="utf-8" />
 
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css" rel="stylesheet" />
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 		
+		<style>
+			h2 > a {
+				display: inline-block;
+			}
+		</style>
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+		<src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+
+		<script id="git-template" type="x-tmpl-mustache">
+			<div class="col s4">
+			 	<div class="card blue-grey darken-1">
+			            <div class="orange card-content white-text">
+			              <span class="card-title">{{name}}</span>
+			              <p>{{description}}</p>
+			            </div>
+
+			            <div class="red card-action">
+			              <a href="{{html_url}}">Github</a>
+			              <a href="{{homepage}}">Homepage</a>
+			            </div>
+			    </div>
+			</div>
+		</script>
+
+		<script>
+			function getGithubRepos(callback) {
+				$.ajax({
+					url: "https://api.github.com/users/montyanderson/repos?sort=updated"
+				}).done(function(res) {
+					var i = 1;
+
+					var render = function(data) {
+						if(!data.homepage) {
+							data.homepage = data.html_url;
+						}
+
+						if(!data.description) {
+							data.description = " - ";
+						}
+
+						$("#git-projects").append(Mustache.render($("#git-template").html(), data));
+
+						if(i == 3) {
+							$("#git-projects").append("<div class='row'></div>");
+							i = 0;
+						}
+
+						i++;
+					}
+
+					var repos = [];
+
+					res.forEach(function(repo) {
+						if(repo.description.substring(0, 1) != ":") {
+							repos.push(repo);
+						}
+					});
+
+					$("#git-projects").html("");
+
+					callback(render, repos);
+				});
+			}
+		</script>
 
 	</head>
 	<body class="grey lighten-4">
 
 	<nav>
-		<div class="red darken-1 nav-wrapper">
-			<a href="#" class="brand-logo center">Monty Anderson</a>
+		<div class="cyan darken-3 nav-wrapper">
+			<div class="container">
+				<a href="/" class="brand-logo left">Monty Anderson</a>
 
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="/git">Git</a></li>
-			</ul>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="https://twitter.com/montyjanderson"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="https://github.com/montyanderson"><i class="fa fa-github"></i></a></li>
+				</ul>
+			</div>
 		</div>
 	</nav>
 
