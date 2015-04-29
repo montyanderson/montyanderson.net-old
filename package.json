@@ -12,5 +12,8 @@
   "dependencies": {
     "ect": "^0.5.9",
     "express": "^4.12.3"
+  },
+  "scripts": {
+    "start": "node app"
   }
 }
