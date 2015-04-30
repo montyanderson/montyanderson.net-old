@@ -1,6 +1,4 @@
-<% extend "layout" %>
-
-<div class="row"></div>
+<% extend "inc/layout" %>
 
 <div class="row">
 	<a class="waves-effect waves-light btn" href="/"><i class="fa fa-arrow-left"></i> Back!</a>
@@ -13,12 +11,7 @@
 </div>
 
 <script>
-	getGithubRepos(function(render, repos) {
-		repos.forEach(function(repo) {
-			render(repo);
-			console.log(repo);
-		});
-	});
+	getGithubRepos("#git-projects", true);
 </script>
 
 <div class="row">

@@ -35,46 +35,7 @@
 			</div>
 		</script>
 
-		<script>
-			function getGithubRepos(callback) {
-				$.ajax({
-					url: "https://api.github.com/users/montyanderson/repos?sort=updated"
-				}).done(function(res) {
-					var i = 1;
-
-					var render = function(data) {
-						if(!data.homepage) {
-							data.homepage = data.html_url;
-						}
-
-						if(!data.description) {
-							data.description = " - ";
-						}
-
-						$("#git-projects").append(Mustache.render($("#git-template").html(), data));
-
-						if(i == 3) {
-							$("#git-projects").append("<div class='row'></div>");
-							i = 0;
-						}
-
-						i++;
-					}
-
-					var repos = [];
-
-					res.forEach(function(repo) {
-						if(repo.description.substring(0, 1) != ":") {
-							repos.push(repo);
-						}
-					});
-
-					$("#git-projects").html("");
-
-					callback(render, repos);
-				});
-			}
-		</script>
+		<% include "inc/script.ect" %>
 
 	</head>
 	<body class="grey lighten-4">
@@ -92,11 +53,15 @@
 		</div>
 	</nav>
 
-	<div class="container center">
+	<div class="container center section">
+
+		<!--Content-->
 
 		<% content %>
 
 	</div>
+
+	<!--Footer-->          
 
 	</body>
 </html>

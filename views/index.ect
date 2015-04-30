@@ -1,4 +1,4 @@
-<% extend "layout" %>
+<% extend "inc/layout" %>
 
 <!--About Me-->
 
@@ -7,7 +7,7 @@
 		<h2 class="flow-text">
 			Hello! I'm <strong>Monty Anderson</strong> and I build <strong>modern</strong>, 
 			<strong>scalable</strong>, <strong>web</strong> applications.
-			Why don't you check out my <a href="/resume">resume</a>?
+			You can check out my <a href="/resume">resume</a>, or <a class="modal-trigger" href="#hire">hire</a> me.
 		</h2>
 	</div>
 
@@ -26,18 +26,30 @@
 
 <!--Git Projects-->
 
-<div class="row" id="git-projects">
+<div id="git-projects">
 	<div class="progress">
     	<div class="indeterminate"></div>
   	</div>
 </div>
 
 <script>
-	getGithubRepos(function(render, repos) {
-		render(repos[0]);
-		render(repos[1]);
-		render(repos[2]);
-	});
+	getGithubRepos("#git-projects", 3);
 </script>
 
 <a class="waves-effect waves-light btn" href="/git"><i class="fa fa-git"></i> View all projects!</a>
+
+<!--'Hire Me' Modal-->
+<div id="hire" class="modal">
+	<div class="modal-content">
+  		<h4>Hire Me!</h4>
+  		<p>A bunch of text</p>
+	</div>
+
+	<div class="modal-footer">
+  		<a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+	</div>
+</div>
+
+<script>
+	$(".modal-trigger").leanModal();
+</script>

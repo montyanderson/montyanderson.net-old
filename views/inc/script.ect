@@ -1,0 +1,41 @@
+<script>
+function getGithubRepos(inject, count) {
+	$.ajax({
+		url: "https://api.github.com/users/montyanderson/repos?sort=updated"
+	}).done(function(res) {
+		var repos = [];
+
+		res.forEach(function(repo) {
+			if(repo.description.substring(0, 1) != ":") {
+				repos.push(repo);
+			}
+		});
+
+		$(inject).html("");
+
+		var i = 0;
+
+		var render = function(data) {
+			if(!data.homepage) { data.homepage = data.html_url }
+			if(!data.description) { data.description = " - " }
+			if(i % 3 == 0) { $("#git-projects").append("<div class='row'></div>") }
+
+			$(inject).children().last().append(
+				Mustache.render($("#git-template").html(), data)
+			);
+
+			i++;
+		}
+
+		if(count == true) {
+			for(var a = 0; a < repos.length; a++) {
+				render(repos[a]);
+			}
+		} else {
+			for(var a = 0; a < count; a++) {
+				render(repos[a]);
+			}
+		}
+	});
+}
+</script>
