@@ -1,8 +1,6 @@
 var express = require("express"),
 	app = express();
 
-app.use(express.static("static"));
-
 var ect = require("ect")({
 	"watch": true,
 	"root": __dirname + "/views",
