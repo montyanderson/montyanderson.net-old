@@ -1,19 +1,20 @@
 <% extend "inc/layout" %>
+<% include "inc/github-api" %>
 
 <div class="row">
 	<a class="waves-effect waves-light btn" href="/"><i class="fa fa-arrow-left"></i> Back!</a>
 </div>
 
-<div class="row" id="git-projects">
+<div id="git-projects">
 	<div class="progress">
     	<div class="indeterminate"></div>
   	</div>
 </div>
 
-<script>
-	getGithubRepos("#git-projects", true);
-</script>
-
 <div class="row">
 	<a class="waves-effect waves-light btn" href="/"><i class="fa fa-arrow-left"></i> Back!</a>
 </div>
+
+<script>
+	getGithubRepos("#git-projects", true);
+</script>
