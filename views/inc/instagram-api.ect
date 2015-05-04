@@ -10,7 +10,7 @@
 </script>
 
 <script>
-function getInstagramPhotos(inject, count) {
+function getInstagramPhotos(inject, count, callback) {
 	$.ajax({
 		url: "https://api.instagram.com/v1/users/1777572832/media/recent",
 		dataType: "jsonp",
