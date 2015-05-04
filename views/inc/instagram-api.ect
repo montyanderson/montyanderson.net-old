@@ -1,0 +1,37 @@
+<script id="photo-template" type="x-tmpl-mustache">
+	<div class="col m12 l3">
+        <div class="card">
+            <div class="card-image">
+              	<img src="{{image}}">
+              	<span class="card-title">{{title}}</span>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script>
+function getInstagramPhotos(inject, count) {
+	$.ajax({
+		url: "https://api.instagram.com/v1/users/1777572832/media/recent",
+		dataType: "jsonp",
+		data: {
+			client_id: "162f7c500bc0450796be623a3affd110"
+		}
+	}).done(function(res) {
+		var i = 0;
+
+		$(inject).html("");
+
+		while(i < count && res.data[i] != undefined) {
+			if(i % 4 == 0) { $(inject).append("<div class='row'></div>") }
+
+			$(inject).children().last().append(Mustache.render($("#photo-template").html(), {
+				image: res.data[i].images.standard_resolution.url,
+				title: res.data[i].caption.text
+			}));
+
+			i++;
+		}
+	});
+}
+</script>

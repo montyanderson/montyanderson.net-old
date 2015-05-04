@@ -1,10 +1,11 @@
 <% extend "inc/layout" %>
 <% include "inc/github-api" %>
+<% include "inc/instagram-api" %>
 
 <!--About Me-->
 
 <div class="row">
-	<div class="col s8">
+	<div class="col m12 l8">
 		<h2 class="flow-text">
 			Hello! I'm <strong>Monty Anderson</strong> and I build <strong>modern</strong>, 
 			<strong>scalable</strong>, <strong>web</strong> applications.
@@ -13,16 +14,11 @@
 		</h2>
 	</div>
 
-	<div class="col s4">
+	<div class="col m12 l4">
 		<h2 class="flow-text">
 			I'm the creator of <a href="http://blocks.montyanderson.net">LiveBlocks</a>, 
 			<a href="http://chat.montyanderson.net">anon-chat</a> and <a href="#">PartyTrak</a>.
 		</h2>
-	</div>
-
-	<div class="col s12 m4">
-
-
 	</div>
 </div>
 
@@ -38,20 +34,18 @@
 	getGithubRepos("#git-projects", 3);
 </script>
 
-<a class="waves-effect waves-light btn" href="/git"><i class="fa fa-git"></i> View all projects!</a>
+<div class="row">
+	<a class="waves-effect waves-light btn" href="/git"><i class="fa fa-git"></i> View all projects!</a>
+</div>
 
-<!--'Hire Me' Modal-->
-<div id="hire" class="modal">
-	<div class="modal-content">
-  		<h4>Hire Me!</h4>
-  		<p>A bunch of text</p>
-	</div>
+<!--Instagram Photos-->
 
-	<div class="modal-footer">
-  		<a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-	</div>
+<div id="instagram-photos">
+	<div class="progress">
+    	<div class="indeterminate"></div>
+  	</div>
 </div>
 
 <script>
-	$(".modal-trigger").leanModal();
+	getInstagramPhotos("#instagram-photos", 4);
 </script>
