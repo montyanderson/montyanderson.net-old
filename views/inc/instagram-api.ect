@@ -18,10 +18,11 @@ function getInstagramPhotos(inject, count) {
 			client_id: "162f7c500bc0450796be623a3affd110"
 		}
 	}).done(function(res) {
-		var i = 0;
-
 		$(inject).html("");
 
+		count = parseInt(count) || res.data.length;
+
+		var i = 0;
 		while(i < count && res.data[i] != undefined) {
 			if(i % 4 == 0) { $(inject).append("<div class='row'></div>") }
 
@@ -32,6 +33,8 @@ function getInstagramPhotos(inject, count) {
 
 			i++;
 		}
+
+		$(inject).attr("class", "animated fadeInUpBig");
 	});
 }
 </script>
