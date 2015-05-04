@@ -34,6 +34,7 @@ function getInstagramPhotos(inject, count) {
 			i++;
 		}
 
+		if(callback != undefined) {callback()}
 		$(inject).attr("class", "animated fadeInUpBig");
 	});
 }

@@ -15,7 +15,7 @@
 </script>
 
 <script>
-function getGithubRepos(inject, count) {
+function getGithubRepos(inject, count, callback) {
 	$.ajax({
 		url: "https://api.github.com/users/montyanderson/repos?sort=updated"
 	}).done(function(res) {
@@ -44,7 +44,10 @@ function getGithubRepos(inject, count) {
 			i++;
 		}
 
+		if(callback != undefined) {callback()}
 		$(inject).attr("class", "animated fadeInUp");
+	}).fail(function() {
+		getGithubRepos(inject, count, callback);
 	});
 }
 </script>

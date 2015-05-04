@@ -30,13 +30,18 @@
   	</div>
 </div>
 
-<script>
-	getGithubRepos("#git-projects", 3);
-</script>
 
 <div class="row">
-	<a class="waves-effect waves-light btn" href="/git"><i class="fa fa-git"></i> View all projects!</a>
+	<a class="waves-effect waves-light btn animated fadeInUpBig" id="git" href="/git"><i class="fa fa-git"></i> View all projects!</a>
 </div>
+
+<script>
+	$("#git").hide();
+
+	getGithubRepos("#git-projects", 3, function() {
+		$("#git").show();
+	});
+</script>
 
 <!--Instagram Photos-->
 
