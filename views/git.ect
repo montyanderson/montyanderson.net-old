@@ -2,7 +2,7 @@
 <% include "inc/github-api" %>
 
 <div class="row">
-	<a class="waves-effect waves-light btn" href="/"><i class="fa fa-arrow-left"></i> Back!</a>
+	<a class="cyan darken-2 waves-effect waves-purple btn" href="/" id="back"><i class="fa fa-arrow-left"></i> Back!</a>
 </div>
 
 <div id="git-projects">
@@ -11,10 +11,8 @@
   	</div>
 </div>
 
-<div class="row">
-	<a class="waves-effect waves-light btn" href="/"><i class="fa fa-arrow-left"></i> Back!</a>
-</div>
-
 <script>
-	getGithubRepos("#git-projects", true);
+	getGithubRepos("#git-projects", true, function() {
+		$("#content").append($("#back").parent().html());
+	});
 </script>
