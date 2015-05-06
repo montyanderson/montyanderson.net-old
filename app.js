@@ -18,6 +18,10 @@ app.get("/git", function(req, res) {
 	res.render("git");
 });
 
+app.get("/thoughts", function(req, res) {
+	res.render("thoughts");
+})
+
 app.get("/records", function(req, res) {
 	res.render("records");
 });
