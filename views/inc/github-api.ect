@@ -45,7 +45,8 @@ function getGithubRepos(inject, count, callback) {
 		}
 
 		if(callback != undefined) {callback()}
-		$(inject).attr("class", "animated fadeInUp");
+
+		$(inject).addClass("animated fadeInUp");
 	}).fail(function() {
 		getGithubRepos(inject, count, callback);
 	});
