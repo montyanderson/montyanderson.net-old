@@ -2,10 +2,12 @@
 <html>
 	<head>
 
-		<title>Monty Anderson</title>
+		<title>Monty Anderson - web and software engineer, living in Brighton, United Kingdom.</title>
 
 		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<meta name="description" content="Monty Anderson - web and software engineer, living in Brighton, United Kingdom." />
 
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css" rel="stylesheet" />
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -15,6 +17,8 @@
 			h2 > a {
 				display: inline-block;
 			}
+
+			.blur { -webkit-filter: blur(2px); filter: blur(2px); }
 		</style>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -32,8 +36,8 @@
 				<a href="/" class="brand-logo left hide-on-small-and-down">Monty Anderson</a>
 
 				<ul class="right hide-on-small-and-down">
-					<li><a href="https://twitter.com/montyjanderson"><i class="fa fa-twitter"></i></a></li>
-					<li><a href="https://github.com/montyanderson"><i class="fa fa-github"></i></a></li>
+					<li><a href="https://twitter.com/montyjanderson" rel="me"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="https://github.com/montyanderson"   rel="me"><i class="fa fa-github"></i></a></li>
 				</ul>
 			</div>
 		</div>
@@ -48,6 +52,14 @@
 <% content %>
 
 	</div>
+
+	<script>
+		$("a").click(function() {
+			if($(this).attr("href") && $(this).attr("href") != "#") {
+				$("#content").addClass("animated bounceOutUp");
+			}
+		});
+	</script>
 
 	<!--Footer-->          
 

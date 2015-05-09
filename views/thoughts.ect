@@ -22,5 +22,7 @@ tumblr_api_read.posts.forEach(function(post) {
 	if(post["regular-title"]) {
 		$("#thoughts").append(Mustache.render($("#post-template").html(), post));
 	}
+
+	$("#thoughts > .col > span > p").css("text-align", "left");
 });
 </script>

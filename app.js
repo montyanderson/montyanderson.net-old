@@ -10,21 +10,19 @@ var ect = require("ect")({
 app.set("view engine", "ect");
 app.engine("ect", ect.render);
 
-app.get("/", function(req, res) {
-	res.render("index");
-});
+app.use(express.static("static"));
 
-app.get("/git", function(req, res) {
-	res.render("git");
-});
+var page = function(path, file) {
+	app.get(path, function(req, res) {
+		res.render(file);
+	});
+}
 
-app.get("/thoughts", function(req, res) {
-	res.render("thoughts");
-})
-
-app.get("/records", function(req, res) {
-	res.render("records");
-});
+page("/", "index");
+page("/git", "git");
+page("/portfolio", "portfolio");
+page("/records", "records");
+page("/thoughts", "thoughts");
 
 var ip = process.env.OPENSHIFT_INTERNAL_IP || process.env.OPENSHIFT_NODEJS_IP || "";
 var port = process.env.OPENSHIFT_INTERNAL_IP || process.env.OPENSHIFT_NODEJS_PORT || process.argv[2] || 8080;
