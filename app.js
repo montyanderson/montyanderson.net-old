@@ -24,6 +24,16 @@ page("/portfolio", "portfolio");
 page("/records", "records");
 page("/thoughts", "thoughts");
 
+/*
+
+var twitter = require("ntwitter");
+
+app.get("/twitter.json", function(req, res) {
+
+});
+
+*/
+
 var ip = process.env.OPENSHIFT_INTERNAL_IP || process.env.OPENSHIFT_NODEJS_IP || "";
 var port = process.env.OPENSHIFT_INTERNAL_IP || process.env.OPENSHIFT_NODEJS_PORT || process.argv[2] || 8080;
 

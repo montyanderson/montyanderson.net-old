@@ -16,9 +16,10 @@
 
 <script>
 function getGithubRepos(inject, count, callback) {
-	$.ajax({
-		url: "https://api.github.com/users/montyanderson/repos?sort=updated"
-	}).done(function(res) {
+
+	function process(res) {
+		localStorage.github = JSON.stringify({res: res, time: new Date().getTime()});
+
 		var repos = [];
 
 		res.forEach(function(repo) {
@@ -47,8 +48,18 @@ function getGithubRepos(inject, count, callback) {
 		if(callback != undefined) {callback()}
 
 		$(inject).addClass("animated fadeInUp");
-	}).fail(function() {
-		getGithubRepos(inject, count, callback);
-	});
+	}
+
+	if(!localStorage.github || localStorage.github == "" || new Date().getTime() - JSON.parse(localStorage.github).time > 60000) {
+		$.ajax({
+			url: "https://api.github.com/users/montyanderson/repos?sort=updated"
+		}).done(process).fail(function() {
+			getGithubRepos(inject, count, callback);
+		});
+	} else {
+		console.log("github repos loaded from localStorage cache");
+		process(JSON.parse(localStorage.github).res);
+	}
+
 }
 </script>
