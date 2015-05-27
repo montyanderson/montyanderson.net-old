@@ -45,12 +45,12 @@ function getGithubRepos(inject, count, callback) {
 			i++;
 		}
 
-		if(callback != undefined) {callback()}
+		if(callback != undefined) {callback(res)}
 
 		$(inject).addClass("animated fadeInUp");
 	}
 
-	if(!localStorage.github || localStorage.github == "" || new Date().getTime() - JSON.parse(localStorage.github).time > 60000) {
+	if(!localStorage || !localStorage.github || localStorage.github == "" || new Date().getTime() - JSON.parse(localStorage.github).time > 60000) {
 		$.ajax({
 			url: "https://api.github.com/users/montyanderson/repos?sort=updated"
 		}).done(process).fail(function() {
