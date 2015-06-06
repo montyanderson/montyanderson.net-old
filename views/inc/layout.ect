@@ -19,6 +19,23 @@
 			}
 
 			.blur { -webkit-filter: blur(2px); filter: blur(2px); }
+
+			.flow-text > img {
+				width: 100%;
+			}
+
+			#title {
+				transition: color 0.2s;
+				font-size: 6em;
+			}
+
+			#title:hover {
+				color: #9e9e9e !important;
+			}
+
+			.post {
+				margin-bottom: 4em;
+			}
 		</style>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -28,21 +45,19 @@
 	</head>
 	<body class="grey lighten-4">
 
-	<div class="navbar-fixed">
-
-	<nav>
-		<div class="cyan darken-3 nav-wrapper">
-			<div class="nav-wrapper container">
-				<a href="/" class="brand-logo left hide-on-small-and-down">Monty Anderson</a>
-
-				<ul class="right hide-on-small-and-down">
-					<li><a href="https://twitter.com/montyjanderson" rel="me"><i class="fa fa-twitter"></i></a></li>
-					<li><a href="https://github.com/montyanderson"   rel="me"><i class="fa fa-github"></i></a></li>
-				</ul>
+		<nav>
+			<div class="cyan darken-3 nav-wrapper">
+				<div class="nav-wrapper container">
+					<ul class="right">
+						<li><a href="https://twitter.com/montyjanderson" rel="me"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="https://github.com/montyanderson"   rel="me"><i class="fa fa-github"></i></a></li>
+					</ul>
+				</div>
 			</div>
-		</div>
-	</nav>
+		</nav>
 
+	<div class="row center hide-on-small-and-down">
+		<h1 class="grey-text black-text" id="title">Monty Anderson</h1>
 	</div>
 
 	<div class="container center section" id="content">

@@ -1,4 +1,5 @@
 var express = require("express"),
+	fs = require("fs");
 	app = express();
 
 var ect = require("ect")({
@@ -25,14 +26,34 @@ page("/records", "records");
 page("/thoughts", "thoughts");
 
 /*
+var posts = fs.readdirSync("blog");
+posts = posts.sort();
+console.log(posts);
 
-var twitter = require("ntwitter");
+app.get("/blog", function(req, res) {
+	var posts = [];
+	var count = 0;
 
-app.get("/twitter.json", function(req, res) {
+	var callback = function(error, data) {
+		if(!error && count != 6) {   // read file
+			if(data) {
+				posts.unshift(JSON.parse(data));
+			}
 
+			fs.readFile("blog/" + count + ".json", callback);
+		} else if (count != 6) {     // failed to read file
+			fs.readFile("blog/" + count + ".json", callback);
+		} else {
+			res.render("blog", {posts: posts});
+		}
+
+		count++;
+	}
+
+	callback();
 });
-
 */
+
 
 var ip = process.env.OPENSHIFT_INTERNAL_IP || process.env.OPENSHIFT_NODEJS_IP || "";
 var port = process.env.OPENSHIFT_INTERNAL_IP || process.env.OPENSHIFT_NODEJS_PORT || process.argv[2] || 8080;
