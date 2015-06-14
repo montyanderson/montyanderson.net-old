@@ -25,7 +25,8 @@ page("/portfolio", "portfolio");
 page("/records", "records");
 page("/thoughts", "thoughts");
 
-/*
+/* Blog */
+
 var posts = fs.readdirSync("blog");
 posts = posts.sort();
 console.log(posts);
@@ -35,7 +36,7 @@ app.get("/blog", function(req, res) {
 	var count = 0;
 
 	var callback = function(error, data) {
-		if(!error && count != 6) {   // read file
+		if(!error && count != 6) {   // read file ``
 			if(data) {
 				posts.unshift(JSON.parse(data));
 			}
@@ -52,8 +53,8 @@ app.get("/blog", function(req, res) {
 
 	callback();
 });
-*/
 
+/* Start the server */
 
 var ip = process.env.OPENSHIFT_INTERNAL_IP || process.env.OPENSHIFT_NODEJS_IP || "";
 var port = process.env.OPENSHIFT_INTERNAL_IP || process.env.OPENSHIFT_NODEJS_PORT || process.argv[2] || 8080;
