@@ -1,23 +1,32 @@
-var express = require("express"),
-	fs = require("fs");
-	app = express();
+var fs = require("fs"),
+	express = require("express"),
+	Mustache = require("mustache");
 
-var ect = require("ect")({
-	"watch": true,
-	"root": __dirname + "/views",
-	"ext": ".ect"
+var build = require("./build.js");
+
+var app = express();
+
+app.engine("mustache", function(filePath, options, callback) {
+	fs.readFile(__dirname + "/templates/layout.mustache", function(layoutError, layout) {
+		if (layoutError) return callback(new Error(layoutError));
+
+		fs.readFile(filePath, function(pageError, page) {
+			if (pageError) return callback(new Error(pageError));
+
+			var html = Mustache.render(layout.toString(), options, {page: page.toString()});
+			return callback(null, html);
+		});
+	});
 });
 
-app.set("view engine", "ect");
-app.engine("ect", ect.render);
-
-app.use(express.static("static"));
+app.set("views", __dirname + "/views");
+app.set("view engine", "mustache");
 
 var page = function(path, file) {
 	app.get(path, function(req, res) {
 		res.render(file);
 	});
-}
+};
 
 page("/", "index");
 page("/git", "git");
@@ -36,7 +45,7 @@ app.get("/blog", function(req, res) {
 	var count = 0;
 
 	var callback = function(error, data) {
-		if(!error && count != 6) {   // read file ``
+		if(!error && count != 6) {   // read file
 			if(data) {
 				posts.unshift(JSON.parse(data));
 			}
@@ -49,10 +58,12 @@ app.get("/blog", function(req, res) {
 		}
 
 		count++;
-	}
+	};
 
 	callback();
 });
+
+build();
 
 /* Start the server */
 

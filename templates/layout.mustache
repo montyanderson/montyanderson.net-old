@@ -9,38 +9,43 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="Monty Anderson - web and software engineer, living in Brighton, United Kingdom." />
 
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css" rel="stylesheet" />
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css" rel="stylesheet" />
+		<link href="bundle.css" rel="stylesheet" />
 
 		<style>
-			h2 > a {
-				display: inline-block;
-			}
 
-			.blur { -webkit-filter: blur(2px); filter: blur(2px); }
-
-			.flow-text > img {
-				width: 100%;
-			}
-
-			#title {
-				transition: color 0.2s;
-				font-size: 6em;
-			}
-
-			#title:hover {
-				color: #9e9e9e !important;
-			}
-
-			.post {
-				margin-bottom: 4em;
-			}
 		</style>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+
+		<script id="photo-template" type="x-tmpl-mustache">
+			<div class="col m12 l3">
+		        <div class="card tooltip photo" data-tooltip="{{date}}" data-position="top" data-link="{{link}}">
+		            <div class="card-image">
+		              	<img src="{{image}}">
+		              	<span class="card-title">{{title}}</span>
+		            </div>
+		        </div>
+		    </div>
+		</script>
+
+		<script id="git-template" type="x-tmpl-mustache">
+			<div class="col m12 l4">
+			 	<div class="card blue-grey darken-1">
+			            <div class="orange card-content white-text">
+			              <span class="card-title">{{name}}</span>
+			              <p>{{description}} <br /><span class="red-text">{{language}}</span></p>
+			            </div>
+
+			            <div class="red card-action">
+			              <a href="{{html_url}}">Github</a>
+			              <a href="{{homepage}}">Homepage</a>
+			            </div>
+			    </div>
+			</div>
+		</script>
 
 	</head>
 	<body class="grey lighten-4">
@@ -66,7 +71,7 @@
 
 		<!--Content-->
 
-<% content %>
+		{{>page}}
 
 	</div>
 

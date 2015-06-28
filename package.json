@@ -10,7 +10,11 @@
   "license": "MIT",
   "private": "true",
   "dependencies": {
-    "ect": "^0.5.9",
-    "express": "^4.12.3"
+    "animate.css": "daneden/animate.css",
+    "browserify": "^10.2.4",
+    "express": "^4.13.0",
+    "less": "^2.5.1",
+    "materialize-css": "^0.96.1",
+    "mustache": "^2.1.2"
   }
 }
