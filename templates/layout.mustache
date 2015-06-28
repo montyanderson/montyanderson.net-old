@@ -10,15 +10,8 @@
 		<meta name="description" content="Monty Anderson - web and software engineer, living in Brighton, United Kingdom." />
 
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" />
 		<link href="bundle.css" rel="stylesheet" />
-
-		<style>
-
-		</style>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
 
 		<script id="photo-template" type="x-tmpl-mustache">
 			<div class="col m12 l3">
@@ -29,22 +22,6 @@
 		            </div>
 		        </div>
 		    </div>
-		</script>
-
-		<script id="git-template" type="x-tmpl-mustache">
-			<div class="col m12 l4">
-			 	<div class="card blue-grey darken-1">
-			            <div class="orange card-content white-text">
-			              <span class="card-title">{{name}}</span>
-			              <p>{{description}} <br /><span class="red-text">{{language}}</span></p>
-			            </div>
-
-			            <div class="red card-action">
-			              <a href="{{html_url}}">Github</a>
-			              <a href="{{homepage}}">Homepage</a>
-			            </div>
-			    </div>
-			</div>
 		</script>
 
 	</head>
@@ -75,34 +52,9 @@
 
 	</div>
 
-	<!--Less than 360px wide fallback-->
-
-	<style>
-		.flowtext {
-			font-size: 20px;
-		}
-	</style>
-
-	<script>
-	(function() {
-		var resize = function() {
-			var minsize = 360;
-
-			if($(window).width() < 360) {
-				console.log("unresponsive mode (>360px)");
-				$(".flow-text").addClass("flowtext");
-			} else {
-				console.log("responsive mode (>360px)");
-				$(".flow-text").removeClass("flowtext");
-			}
-		}
-
-		resize();
-		$(window).resize(resize);
-	})();
-	</script>
-
 	<!--Footer-->
+
+		<script src="bundle.js"></script>
 
 	</body>
 </html>

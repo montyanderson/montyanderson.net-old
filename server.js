@@ -2,9 +2,9 @@ var fs = require("fs"),
 	express = require("express"),
 	Mustache = require("mustache");
 
-var build = require("./build.js");
-
 var app = express();
+
+app.use(express.static("static"));
 
 app.engine("mustache", function(filePath, options, callback) {
 	fs.readFile(__dirname + "/templates/layout.mustache", function(layoutError, layout) {
@@ -62,8 +62,6 @@ app.get("/blog", function(req, res) {
 
 	callback();
 });
-
-build();
 
 /* Start the server */
 

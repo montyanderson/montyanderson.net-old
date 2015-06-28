@@ -4,7 +4,8 @@
   "description": "My personal website.",
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "gulp build && node server",
+    "dev": "gulp dev"
   },
   "author": "Monty Anderson",
   "license": "MIT",
@@ -15,6 +16,7 @@
     "express": "^4.13.0",
     "less": "^2.5.1",
     "materialize-css": "^0.96.1",
-    "mustache": "^2.1.2"
+    "mustache": "^2.1.2",
+    "jquery": "2.1.4"
   }
 }

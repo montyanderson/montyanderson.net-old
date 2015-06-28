@@ -22,7 +22,7 @@
 
 <!--Git Projects-->
 
-<div id="git-projects">
+<div id="git-projects" data-count="3">
 	<div class="progress">
     	<div class="indeterminate"></div>
   	</div>
@@ -33,14 +33,6 @@
 	<a class="cyan darken-2 waves-effect waves-purple btn animated fadeInUpBig" id="git" href="/git"><i class="fa fa-git"></i> View all projects!</a>
 </div>
 
-<script>
-	$("#git").hide();
-
-	getGithubRepos("#git-projects", 3, function() {
-		$("#git").show();
-	});
-</script>
-
 <!--Instagram Photos-->
 
 <div id="instagram-photos">
@@ -48,7 +40,3 @@
     	<div class="indeterminate"></div>
   	</div>
 </div>
-
-<script>
-	getInstagramPhotos("#instagram-photos", 4);
-</script>
