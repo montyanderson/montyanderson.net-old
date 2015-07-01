@@ -1,5 +1,0 @@
-{
-	"title": "Arduino - using a potentiometer to control analog input",
-	"content": "<img src='/images/1-diagram.svg' />Getting analog input from an arduino is really very simple. The ADC (analog to digital converter) has 8 bits of resolution (2^8), meaning it has 256 different 'steps' (or 0 to 255).",
-	"date": "27/5/15"
-}
