@@ -1,0 +1,19 @@
+<div class="row">
+    {{#repos}}
+    <div class="col m12 l4">
+         <div class="card darken-1">
+                <div class="orange card-content white-text">
+                  <span class="card-title">{{name}}</span>
+                  <p>{{description}} <br /><span class="red-text">{{language}}</span></p>
+                </div>
+
+                <div class="red card-action">
+                  <a href="{{{html_url}}}">Github</a>
+                  {{#homepage}}
+                  <a href="{{{homepage}}}">Homepage</a>
+                  {{/homepage}}
+                </div>
+        </div>
+    </div>
+    {{/repos}}
+</div>
