@@ -32,7 +32,9 @@ app.get("/", function(req, res) {
     res.render("index", {
         layout: "main",
         repos: repos.slice(0, 3),
-        totalRepos: repos.length
+        totalRepos: repos.length,
+        age: Math.round(Math.abs((new Date().getTime() - new Date("04/29/2001").getTime()) / (24*60*60*1000))) / 365.00,
+        since1970: new Date().getTime()
     });
 });
 
@@ -79,6 +81,16 @@ function updateRepos() {
                         return false;
                     }
                 });
+
+                var languages = [];
+
+                repos.forEach(function(repo) {
+                    if(languages[repo]) {
+                        languages[repo] += 1;
+                    } else {
+                        languages[repo] = 1;
+                    }
+                });
             }
         } else {
             console.log(error);
@@ -89,4 +101,7 @@ function updateRepos() {
 updateRepos();
 setInterval(updateRepos, 5 * 60 * 1000);
 
-app.listen(8080);
+var port = process.env.PORT || process.argv[3] || 8080;
+app.listen(port);
+
+console.log("Server started at port " + port + ".");

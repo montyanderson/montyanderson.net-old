@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col m12 l8">
+<div class="row center">
+    <div class="col s12 l8">
         <p class="flow-text">
             Hello, I'm Monty Anderson! I'm a web application developer who's familiar with both node.js and PHP.
             You can find/contact me at <a href="https://github.com/montyanderson">Github</a> and
@@ -7,8 +7,8 @@
         </p>
     </div>
 
-    <div class="col m12 l4">
-        <p class="flow-text">
+    <div class="col s12 l4">
+        <p class="flow-text center-align">
             <span class="indigo-text">console</span>.<span class="red-text">log</span>(<span class="orange-text">"Hello, World!"</span>);
         </p>
     </div>
@@ -16,7 +16,7 @@
 
 <div class="row">
     {{#repos}}
-    <div class="col m12 l4">
+    <div class="col s12 l4">
          <div class="card darken-1">
                 <div class="orange card-content white-text">
                     <span class="card-title">{{name}}</span>
@@ -40,8 +40,8 @@
 </div>
 
 <div class="row">
-    <div class="col m6 l3">
-        <div class="card pink accent-3">
+    <div class="col s6 l3">
+        <div class="card pink lighten-2">
             <div class="card-content white-text">
                 <span class="card-title">{{totalRepos}}</span>
                 <p>Repositories on Github</p>
@@ -49,11 +49,30 @@
         </div>
     </div>
 
-    <div class="col m6 l3">
-        <div class="card pink accent-3">
+    <div class="col s6 l3">
+        <div class="card pink lighten-2">
             <div class="card-content white-text">
                 <span class="card-title visited"></span>
                 <p>Times you've visited this website</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s6 l3">
+        <div class="card pink lighten-2">
+            <div class="card-content white-text">
+                <span class="card-title">{{age}}</span>
+                <p>Years of age</p>
+            </div>
+        </div>
+    </div>
+
+        <div class="col s6 l3">
+            <div class="card pink lighten-2">
+                <div class="card-content white-text">
+                    <span class="card-title since1970">{{since1970}}</span>
+                    <p>Amount of miliseconds since January 1970.</p>
+                </div>
             </div>
         </div>
     </div>
