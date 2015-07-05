@@ -1,4 +1,4 @@
 node_modules
-static/bundle.css
-static/bundle.js
+public/bundle.css
+public/bundle.js
 *.log
