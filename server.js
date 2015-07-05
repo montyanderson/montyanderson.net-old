@@ -101,7 +101,8 @@ function updateRepos() {
 updateRepos();
 setInterval(updateRepos, 5 * 60 * 1000);
 
-var port = process.env.PORT || process.argv[3] || 8080;
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || process.argv[3] || 8080;
+var ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || process.arguments[4] || "*";
 app.listen(port);
 
 console.log("Server started at port " + port + ".");
