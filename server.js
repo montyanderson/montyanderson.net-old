@@ -69,7 +69,7 @@ require("./repos.js")(function(data) {
 });
 
 var port = process.env.OPENSHIFT_NODEJS_IP || process.argv[3] || 8080;
-var ip =  process.env.OPENSHIFT_INTERNAL_IP || process.env.OPENSHIFT_NODEJS_PORT || process.argv[4] || "*";
-app.listen(port);
+var ip = process.env.OPENSHIFT_INTERNAL_IP || process.env.OPENSHIFT_NODEJS_PORT || process.argv[4] || "localhost";
+app.listen(port, ip);
 
 console.log("Server started at " + ip + ":" + port + ".");
