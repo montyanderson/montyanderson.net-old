@@ -7,7 +7,7 @@ var fs = require("fs"),
 var app = express();
 
 app.engine("mustache", function(filePath, options, callback) {
-    var layoutPath = path.join(__dirname, app.get("layouts"), options.layout) + ".mustache";
+    var layoutPath = path.join(app.get("layouts"), options.layout) + ".mustache";
 
     fs.readFile(layoutPath, function(layoutError, layout) {
         if(layoutError) return callback(new Error(layoutError));
