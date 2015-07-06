@@ -21,8 +21,8 @@ app.engine("mustache", function(filePath, options, callback) {
     });
 });
 
-app.set("views", "./templates/views");
-app.set("layouts", "./templates/layouts");
+app.set("views", __dirname + "/templates/views");
+app.set("layouts", __dirname + "/templates/layouts");
 app.set("view engine", "mustache");
 
 app.use(express.static("public"));
