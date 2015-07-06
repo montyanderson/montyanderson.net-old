@@ -25,7 +25,7 @@ app.set("views", __dirname + "/templates/views");
 app.set("layouts", __dirname + "/templates/layouts");
 app.set("view engine", "mustache");
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 
 app.get("/", function(req, res) {
     res.render("index", {
