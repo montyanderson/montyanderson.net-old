@@ -2,7 +2,6 @@ var fs = require("fs"),
     path = require("path"),
     express = require("express"),
     mustache = require("mustache"),
-    request = require("request"),
     sm = require("sitemap");
 
 var app = express();
@@ -62,47 +61,15 @@ app.get("/sitemap.xml", function(req, res) {
 });
 
 var repos = [];
+var languages = [];
 
-function updateRepos() {
-    request({
-        url: "https://api.github.com/users/montyanderson/repos?sort=updated",
-        headers: {
-            "User-Agent": "montyanderson"
-        }
-    }, function(error, response, body) {
-        if(!error && response.statusCode == 200) {
-            var data = JSON.parse(body);
-
-            if(data) {
-                repos = data.filter(function(repo) {
-                    if(repo.description.substring(0, 1) != ":") {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                });
-
-                var languages = [];
-
-                repos.forEach(function(repo) {
-                    if(languages[repo]) {
-                        languages[repo] += 1;
-                    } else {
-                        languages[repo] = 1;
-                    }
-                });
-            }
-        } else {
-            console.log(error);
-        }
-    });
-}
-
-updateRepos();
-setInterval(updateRepos, 5 * 60 * 1000);
+require("./repos.js")(function(data) {
+    repos = data.repos;
+    languages = data.languages;
+});
 
 var port = process.env.PORT || process.argv[3] || 8080;
-var ip =  process.env.IP || process.argv[4] || "*";
-app.listen(port);
+var ip =  process.env.IP || process.argv[4] || "";
+app.listen(port, ip);
 
 console.log("Server started at " + ip + ":" + port + ".");
