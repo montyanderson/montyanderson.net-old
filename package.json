@@ -20,6 +20,7 @@
   "homepage": "https://github.com/montyanderson/montyanderson.net#readme",
   "dependencies": {
     "browserify": "^10.2.4",
+    "compression": "^1.5.1",
     "express": "^4.13.0",
     "gulp": "^3.9.0",
     "gulp-jshint": "^1.11.2",

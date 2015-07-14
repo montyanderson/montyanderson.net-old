@@ -2,6 +2,7 @@ var fs = require("fs"),
     path = require("path"),
     express = require("express"),
     mustache = require("mustache"),
+    compression = require("compression"),
     sm = require("sitemap");
 
 var app = express();
@@ -25,6 +26,7 @@ app.set("views", __dirname + "/templates/views");
 app.set("layouts", __dirname + "/templates/layouts");
 app.set("view engine", "mustache");
 
+app.use(compression());
 app.use(express.static(__dirname + "/public"));
 
 app.get("/", function(req, res) {
