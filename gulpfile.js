@@ -51,5 +51,5 @@ gulp.task("lint", function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task("build", ["styles", "scripts", "lint"]);
-gulp.task("dev", ["build", "watch"]);
+gulp.task("default", ["styles", "scripts", "lint"]);
+gulp.task("dev", ["default", "watch"]);
