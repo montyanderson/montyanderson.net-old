@@ -22,11 +22,19 @@
 		<nav>
 			<div class="cyan darken-3 nav-wrapper">
 				<div class="nav-wrapper container">
+					<ul class="right">
+						<li><a href="/">Home</a></li>
+						<li><a href="/git">Git</a></li>
+						<li><a href="/portfolio">Portfolio</a></li>
+					</ul>
 				</div>
 			</div>
 		</nav>
 
 		<div class="container center section" id="content">
+			{{#title}}
+				<h1 class="row">{{title}}</h1>
+			{{/title}}
 
 	        {{>page}}
 

@@ -26,3 +26,26 @@ body {
 .m12 {
     //width: 100%;
 }
+
+.blur(@value) {
+    filter: blur(@value);
+    -webkit-filter: blur(@value);
+}
+
+.portfolio {
+    .card {
+        .card-image {
+            //blur
+        }
+
+        .card-title {
+            color: black;
+        }
+
+        .card-action {
+            a {
+                text-transform: none !important;
+            }
+        }
+    }
+}
