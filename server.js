@@ -98,6 +98,13 @@ app.get("/portfolio", function(req, res) {
                         href: "https://github.com/montyanderson/xmath"
                     }
                 ]
+            },
+            {
+                title: "Catwalk Cakes",
+                titleColor: "pink",
+                image: "images/catwalk-cakes.png",
+                imageHref: "#",
+                description: "A modern website for local cake shop, <i>Catwalk Cakes</i>."
             }
         ]
     });
