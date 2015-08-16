@@ -58,10 +58,21 @@ body {
     filter: blur(@blur);
 }
 
-.parallax {
-    .blur(2px);
+.parallax-container {
+    height: 10%;
 }
 
 .code {
-    height: 10%;
+    img {
+        .blur(2px);
+    }
+}
+
+
+.records {
+    img {
+        .blur(1px);
+    }
+
+    padding: 100px;
 }
