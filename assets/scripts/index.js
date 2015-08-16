@@ -1,4 +1,5 @@
-if(location.pathname == "/") {
-    require("./visited.js")();
-    require("./since1970.js")();
-}
+window.jQuery = window.$ = require("jquery");
+
+$(document).ready(function() {
+    $(".parallax").parallax();
+});

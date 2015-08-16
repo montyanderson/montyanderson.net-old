@@ -28,6 +28,7 @@ app.set("view engine", "mustache");
 
 app.use(compression());
 app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/node_modules/materialize-css/bin/"));
 
 app.get("/", function(req, res) {
     res.render("index", {
