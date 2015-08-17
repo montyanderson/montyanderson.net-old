@@ -23,10 +23,9 @@
 			<div class="cyan darken-3 nav-wrapper">
 				<div class="nav-wrapper container">
 					<ul class="right">
-						<li><a href="/">Home</a></li>
-						<li><a href="/git">Git</a></li>
-						<li><a href="/portfolio">Portfolio</a></li>
-						<li><a href="/music">Music</a></li>
+						{{#pages}}
+						<li><a href="{{{url}}}">{{title}}</a></li>
+						{{/pages}}
 					</ul>
 				</div>
 			</div>

@@ -2,28 +2,38 @@ var fs = require("fs"),
     path = require("path"),
     express = require("express"),
     mustache = require("mustache"),
+    async = require("async"),
+    merge = require("merge"),
     compression = require("compression"),
     sm = require("sitemap");
 
 var app = express();
 
 app.engine("mustache", function(filePath, options, callback) {
-    var layoutPath = path.join(app.get("layouts"), options.layout) + ".mustache";
+    var files = [];
 
-    fs.readFile(layoutPath, function(layoutError, layout) {
-        if(layoutError) return callback(new Error(layoutError));
+    files.push(path.join(app.get("layouts"), options.layout) + ".mustache");
+    files.push(filePath);
 
-        fs.readFile(filePath, function(pageError, page) {
-            if(pageError) return callback(new Error(pageError));
+    if(options.data)
+        files.push(path.join(app.get("data"), options.data) + ".json");
 
-            var html = mustache.render(layout.toString(), options, {page: page.toString()});
-            return callback(null, html);
-        });
+    async.map(files, fs.readFile, function(err, data) {
+        if(err) return callback(new Error(err));
+
+        options.pages = pages;
+
+        if(data[2])
+            merge(options, JSON.parse(data[2]));
+
+        var html = mustache.render(data[0].toString(), options, {page: data[1].toString()});
+        return callback(null, html);
     });
 });
 
 app.set("views", __dirname + "/templates/views");
 app.set("layouts", __dirname + "/templates/layouts");
+app.set("data", __dirname + "/templates/data");
 app.set("view engine", "mustache");
 
 app.use(compression());
@@ -51,110 +61,50 @@ app.get("/git", function(req, res) {
 app.get("/portfolio", function(req, res) {
     res.render("portfolio", {
         title: "Portfolio",
-        layout: "main",
-        portfolio: [
-            {
-                title: "SmartPlay",
-                titleColor: "orange",
-                image: "images/smartplay.png",
-                imageHref: "http://sp.montyanderson.net",
-                description: "A smart playlist generator for spotify, that uses freely available data from Last.fm and Spotify to generate playlists made for the user. It was originally created for the programming competition <i>Young Rewired State 2015</i>, but has managed to become successful after the event.",
-                links: [
-                    {
-                        title: "sp.montyanderson.net",
-                        href: "http://sp.montyanderson.net"
-                    },
-                    {
-                        title: "Github",
-                        href: "https://github.com/montyanderson/SmartPlay"
-                    }
-                ]
-            },
-            {
-                title: "Cardboard City",
-                titleColor: "black",
-                image: "images/cardboard-city.png",
-                imageHref: "http://cc.montyanderson.net",
-                description: "An interactive, real-time web interface for the Cardboard City art exhibition run by Exploring Senses at the Phoenix Art Gallery in Brighton.",
-                links: [
-                    {
-                        title: "cc.montyanderson.net",
-                        href: "http://cc.montyanderson.net"
-                    },
-                    {
-                        title: "Github",
-                        href: "https://github.com/montyanderson/cardboardcity-webgui"
-                    }
-                ]
-            },
-            {
-                title: "xmath",
-                titleColor: "white",
-                image: "images/xmath.png",
-                imageHref: "https://github.com/montyanderson/xmath",
-                description: "A fast, scalable Mathematics library for C++.",
-                links: [
-                    {
-                        title: "Github",
-                        href: "https://github.com/montyanderson/xmath"
-                    }
-                ]
-            },
-            {
-                title: "Catwalk Cakes",
-                titleColor: "pink",
-                image: "images/catwalk-cakes.png",
-                imageHref: "#",
-                description: "A modern website for local cake shop, <i>Catwalk Cakes</i>."
-            }
-        ]
+        data: "portfolio",
+        layout: "main"
     });
 });
 
-app.get("/music", function(req, res) {
-    res.render("music", {
-        title: "Music",
-        layout: "main",
-        albums: [
-            {
-                title: "Rust in Peace",
-                year: "1990",
-                artist: "Megadeth",
-                image: "images/albums/rust-in-peace.jpg",
-                review: "This album is one of the single best albums, in my opinion, of all time. Every song from start to finish is engineered exquisitely; it's splattered with melodic solos and furiously complex riffage, from <i>Dave Mustaine</i> and <i>Marty Friedman</i>. This, along with a combination of tight drums and spirally bass allows for a true masterpiece."
-            },
-            {
-                title: "Two",
-                year: "2005",
-                artist: "Cursed",
-                image: "images/albums/two.jpg",
-                review: "After not really exploring much outside of metal, I was introduced to this album. This album combines attidue, dispair and resentment into a trio of anti-statist societal anger. Far from the one-dimensional teenage angst seen in some areas of hardcore and punk, this album looks deeply into cultural injustuice and demonstates it with abrasive vocals, pounding drums and droning guitars."
-            },
-            {
-                title: "The Oncoming Storm",
-                year: "2004",
-                artist: "Unearth",
-                image: "images/albums/the-oncoming-storm.jpg",
-                review: "Straight from the New England metalcore scene, the <i>The Oncoming Storm</i> features a musical dichotomy of melodic, beautifully-harmonised guitars, with harsh, aggressive vocals. The sheer technical ability presented from <i>Ken Susi</i> and <i>Buz McGrath</i> lifts this LP up another step."
-            },
-            {
-                title: "Ashes of the Wake",
-                year: "2004",
-                artist: "Lamb of God",
-                image: "images/albums/ashes-of-the-wake.jpg",
-                review: "Seemingly evasive from any singular metal subgenre, <i>Ashes of the Wake</i> displays rhythmic guitars, raging vocals, and tight, filled drums. From the tremolo picking, to the guest solos played by <i>Alex Skolnick</i> and <i>Chris Poland</i>, everything about this album is perfect."
-            }
-        ]
+app.get("/albums", function(req, res) {
+    res.render("albums", {
+        title: "Albums",
+        data: "albums",
+        layout: "main"
     });
 });
+
+var pages = [
+    {
+        url: "/",
+        title: "Home",
+        changefreq: "weekly",
+        priority: 1
+    },
+    {
+        url: "/git",
+        title: "Git",
+        changefreq: "daily",
+        priority: 0.5
+    },
+    {
+        url: "/portfolio",
+        title: "Portfolio",
+        changefreq: "weekly",
+        priority: 0.5
+    },
+    {
+        url: "/albums",
+        title: "Albums",
+        changefreq: "weekly",
+        priority: 0.5
+    }
+];
 
 var sitemap = sm.createSitemap({
     hostname: "http://montyanderson.net",
     cacheTime: 600000,
-    urls: [
-        {url: "/",  changefreq: "weekly", priority: 1},
-        {url: "/git",  changefreq: "daily", priority: 0.5}
-    ]
+    urls: pages
 });
 
 app.get("/sitemap.xml", function(req, res) {
