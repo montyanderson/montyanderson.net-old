@@ -51,14 +51,6 @@ app.get("/", function(req, res) {
     });
 });
 
-app.get("/git", function(req, res) {
-    res.render("git", {
-        title: "Git",
-        layout: "main",
-        repos: repos
-    });
-});
-
 app.get("/portfolio", function(req, res) {
     res.render("portfolio", {
         title: "Portfolio",
