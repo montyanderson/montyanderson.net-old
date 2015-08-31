@@ -1,0 +1,15 @@
+{
+    "efficiency": [
+        "images/technologies/nodejs.svg",
+        "images/technologies/php.svg",
+        "images/technologies/redis.svg",
+        "images/technologies/bootstrap.png",
+        "images/technologies/jquery.svg",
+        "images/technologies/express.png"
+    ],
+    "payment": [
+        "https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png",
+        "images/payment/bitcoin.svg",
+        "images/payment/dogecoin.png"
+    ]
+}

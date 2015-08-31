@@ -5,7 +5,7 @@
 </div>
 
 <div class="parallax-container white-text code">
-    <div class="parallax languages"><img src="images/code.png" /></div>
+    <div class="parallax languages"><img src="images/code.jpg" /></div>
 
     <div class="container section row center">
         <div class="col s12 l8">
@@ -43,4 +43,46 @@
         </div>
     </div>
     {{/repos}}
+</div>
+
+<div class="container row">
+
+</div>
+
+<div class="container row efficiency">
+    <h2 class="col s12">Efficiency</h2>
+
+    <p class="col s12 flow-text">
+        I always use the right tools for the job and a no-compromise scalability  to speed, scalability, and usability.
+    </p>
+
+    <div class="col s12 valign-wrapper">
+        {{#efficiency}}
+            <div class="col s6 m4 l2 valign">
+                <img src="{{{.}}}" />
+            </div>
+        {{/efficiency}}
+    </div>
+</div>
+
+<div class="container row payment">
+    <h2 class="col s12">Payment</h2>
+
+    <p class="col s12 flow-text">
+        Pay me using Paypal, Bitcoin, or <span class="dogecoin">Dogecoin</span>!
+        <br />If you like something I've made, or some work I've done... why not send me a tip?
+    </p>
+
+    <pre class="col s12 bold flow-text left-align">
+        Paypal Email <a>monty.linux@gmail.com</a>
+        Dogecoin Address <a>DTjoDhcaoBnx1SCkS4rD45F47S7tqFpVpH</a>
+    </pre>
+
+    <div class="col s12 valign-wrapper">
+        {{#payment}}
+            <div class="col s4 valign">
+                <img src="{{{.}}}" />
+            </div>
+        {{/payment}}
+    </div>
 </div>

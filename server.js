@@ -43,6 +43,7 @@ app.use(express.static(__dirname + "/node_modules/materialize-css/bin/"));
 app.get("/", function(req, res) {
     res.render("index", {
         layout: "main",
+        data: "index",
         repos: repos.slice(0, 3),
         totalRepos: repos.length,
         age: Math.round(Math.abs((new Date().getTime() - new Date("04/29/2001").getTime()) / (24*60*60*1000))) / 365.00,
