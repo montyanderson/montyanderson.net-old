@@ -10,7 +10,7 @@
     <div class="container section row center">
         <div class="col s12 l8">
             <p class="flow-text">
-                <p class="flow-text">Web and software developer in Brighton. Fluent in <a href="https://nodejs.org/">Node.js</a> (Javascript), <a href="http://www.php.net/">PHP</a>, <a href="http://jekyllrb.com/">Jekyll</a>, <a href="https://en.wikipedia.org/wiki/HTML5">HTML5</a>, CSS3, and <a href="https://en.wikipedia.org/wiki/C%2B%2B">C++</a>. Makes powerful, scalable web applications. <b>monty.linux@gmail.com</b>.
+                <p class="flow-text">Web and software developer in Brighton. Very familiar with a host of languages, frameworks, databases, and datasets. Has interests in both networking, Linux, Music, Maths, and Physics.
             </p>
         </div>
 
@@ -23,6 +23,10 @@
 </div>
 
 <div class="container row">
+    <div class="col s12">
+        <h3>monty.linux@gmail.com <a href="https://twitter.com/montyjanderson">Twitter</a>  <a href="https://github.com/montyanderson">Github</a></h3>
+    </div>
+
     {{#repos}}
     <div class="col s12 l4">
          <div class="card darken-1">
@@ -47,40 +51,52 @@
 
 </div>
 
-<div class="container row efficiency">
-    <h2 class="col s12">Efficiency</h2>
+<div class="container row">
 
-    <p class="col s12 flow-text">
-        I always use the right tools for the job and a no-compromise attitude to speed, scalability, and usability.
-    </p>
+    <div class="col s12 m6">
+        <h2>Efficiency</h2>
 
-    <div class="col s12 valign-wrapper">
-        {{#efficiency}}
-            <div class="col s6 m4 l2 valign">
+        <p class="flow-text">
+            I always use the right tools for the job, even if it requires me to learn new languages, frameworks, or tools.
+        </p>
+    </div>
+
+    <div class="col s12 m6">
+        <h2>Security</h2>
+
+        <p class="flow-text">
+            Need to send me something sensitive? Feel free to send me encrypted infomation with my <a href="public.asc">PGP public key</a>.
+        </p>
+    </div>
+
+    <div class="col s12 valign-wrapper technologies">
+        {{#technologies}}
+            <div class="col s2 valign">
                 <img src="{{{.}}}" />
             </div>
-        {{/efficiency}}
+        {{/technologies}}
     </div>
-</div>
 
-<div class="container row payment">
-    <h2 class="col s12">Payment</h2>
+    <div class="col s12 m6">
+        <h2>Payment</h2>
 
-    <p class="col s12 flow-text">
-        Pay me using Paypal, Bitcoin, or <span class="dogecoin">Dogecoin</span>!
-        <br />If you like something I've made, or some work I've done... why not send me a tip?
-    </p>
+        <p class="flow-text">
+            Pay me using Paypal, Bitcoin, or <span class="dogecoin">Dogecoin</span>!
+            <br />If you like something I've made, or some work I've done... why not send me a tip?
+        </p>
+    </div>
+
+    <div class="col s12 m6">
+        <h2>Experience</h2>
+
+        <p class="flow-text">
+            I've been programming almost every day since I was seven! I've definitely been in the game a while.
+        </p>
+    </div>
 
     <pre class="col s12 bold flow-text left-align">
-        Paypal Email <a>monty.linux@gmail.com</a>
-        Dogecoin Address <a>DTjoDhcaoBnx1SCkS4rD45F47S7tqFpVpH</a>
+Paypal Email <a>monty.linux@gmail.com</a>
+Dogecoin Address <a>DTjoDhcaoBnx1SCkS4rD45F47S7tqFpVpH</a>
     </pre>
 
-    <div class="col s12 valign-wrapper">
-        {{#payment}}
-            <div class="col s4 valign">
-                <img src="{{{.}}}" />
-            </div>
-        {{/payment}}
-    </div>
 </div>

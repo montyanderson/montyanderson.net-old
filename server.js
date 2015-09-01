@@ -51,6 +51,10 @@ app.get("/", function(req, res) {
     });
 });
 
+app.get("/git", function(req, res) {
+    res.redirect("/");
+})
+
 app.get("/portfolio", function(req, res) {
     res.render("portfolio", {
         title: "Portfolio",
@@ -73,12 +77,6 @@ var pages = [
         title: "Home",
         changefreq: "weekly",
         priority: 1
-    },
-    {
-        url: "/git",
-        title: "Git",
-        changefreq: "daily",
-        priority: 0.5
     },
     {
         url: "/portfolio",
