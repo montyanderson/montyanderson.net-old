@@ -1,6 +1,0 @@
-#!/bin/bash
-OLD_HOME=$HOME
-cd $OPENSHIFT_REPO_DIR
-export HOME=$OPENSHIFT_REPO_DIR
-gulp build
-export HOME=$OLD_HOME
