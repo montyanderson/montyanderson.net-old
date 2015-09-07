@@ -21,7 +21,7 @@
   "homepage": "https://github.com/montyanderson/montyanderson.net#readme",
   "dependencies": {
     "async": "^1.4.2",
-    "browserify": "^10.2.4",
+    "browserify": "^10.2.6",
     "compression": "^1.5.1",
     "express": "^4.13.0",
     "gulp": "^3.9.0",
