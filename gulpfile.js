@@ -4,7 +4,6 @@ var gulp = require("gulp"),
     uglify = require("gulp-uglify"),
     rename = require("gulp-rename"),
     minify = require("gulp-minify-css"),
-    jshint = require("gulp-jshint"),
     source = require("vinyl-source-stream"),
     browserify = require("browserify"),
     path = require("path");
@@ -21,7 +20,7 @@ function logError(err) {
 
 gulp.task("watch", function() {
     gulp.watch(paths.styles, ["styles"]);
-    gulp.watch(paths.scripts, ["scripts", "lint"]);
+    gulp.watch(paths.scripts, ["scripts"]);
 });
 
 gulp.task("styles", function() {
@@ -45,11 +44,5 @@ gulp.task("scripts", function() {
     .pipe(gulp.dest("./public/"));
 });
 
-gulp.task("lint", function() {
-    return gulp.src(paths.scripts)
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
-});
-
-gulp.task("default", ["styles", "scripts", "lint"]);
+gulp.task("default", ["styles", "scripts"]);
 gulp.task("dev", ["default", "watch"]);
