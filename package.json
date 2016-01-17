@@ -1,0 +1,38 @@
+{
+  "name": "montyanderson.net",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp dev",
+    "prepublish": "gulp",
+    "deploy": "pm2 start server.js --name montyanderson-app -i 8 --max-memory-restart 200 && pm2 start daemon.js --name montyanderson-daemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/montyanderson/montyanderson.net.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/montyanderson/montyanderson.net/issues"
+  },
+  "homepage": "https://github.com/montyanderson/montyanderson.net#readme",
+  "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "^1.14.2",
+    "bootstrap": "^3.3.6",
+    "connect-mongo": "^1.1.0",
+    "express": "^4.13.3",
+    "express-session": "^1.13.0",
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.5",
+    "handlebars": "^4.0.5",
+    "marked": "^0.3.5",
+    "mongoose": "^4.3.6",
+    "request": "^2.67.0"
+  },
+  "devDependencies": {
+    "gulp-cssnano": "^2.1.0"
+  }
+}
