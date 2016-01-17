@@ -20,7 +20,7 @@ function getGithub() {
             query.exec(callback);
         }, function(err) {
             console.log(err || "Got " + repos.length + " repos!");
-            setTimeout(getGithub, 1000 * 60);
+            setTimeout(getGithub, 1000 * 60 * 30);
         })
     });
 }
