@@ -23,6 +23,7 @@ fs.readdirSync(viewsPath).forEach(function(file) {
     }
 });
 
+/*
 var partialsPath = __dirname + "/views/partials/";
 
 fs.readdirSync(partialsPath, function(file) {
@@ -30,6 +31,7 @@ fs.readdirSync(partialsPath, function(file) {
     var partial = fs.readFileSync(path).toString();
     handlebars.registerPartial(file.split(".")[0], partial);
 });
+*/
 
 module.exports = function(path, options, callback) {
     var view = views[path](options);
