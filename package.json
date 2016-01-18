@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "gulp dev",
     "prepublish": "gulp",
-    "deploy": "pm2 start server.js --name montyanderson-app -i 8 && pm2 start daemon.js --name montyanderson-daemon"
+    "deploy": "pm2 start server.js --name montyanderson-app -i 8 && pm2 start daemon.js --name montyanderson-daemon",
+    "restart": "pm2 restart montyanderson-app && pm2 restart montyanderson-daemon"
   },
   "repository": {
     "type": "git",
