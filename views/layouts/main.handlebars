@@ -28,14 +28,21 @@
 
         <div class="container">
             <div class="row">
-                {{#if projects}}
+                {{#if projectLinks}}
                 <div class="col s2">
                     <p class="flow-text">Projects</p>
-                    {{#projects}}
+                    {{#projectLinks}}
                         <div class="chip project">
                             <a href="/project/{{_id}}">{{title}}</a>
                         </div>
-                    {{/projects}}
+                    {{/projectLinks}}
+
+                    <p class="flow-text">Repositories</p>
+                    {{#repoLinks}}
+                        <div class="chip project">
+                            <a href="https://github.com/{{full_name}}">{{name}}</a>
+                        </div>
+                    {{/repoLinks}}
                 </div>
                 {{/if}}
 

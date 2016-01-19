@@ -2,6 +2,15 @@ var fs = require("fs");
 var handlebars = require("handlebars");
 var async = require("async");
 
+handlebars.registerHelper("splice", function(a, from, to, options) {
+    var s = "";
+
+    for(var i = from; i < to; i++)
+        s += options.fn(a[i]);
+
+    return s;
+});
+
 var layouts = [];
 var layoutsPath = __dirname + "/views/layouts/";
 

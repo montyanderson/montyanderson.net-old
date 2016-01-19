@@ -36,8 +36,16 @@ app.use(express.static(__dirname + "/public"));
 app.use(function(req, res, next) {
     models.Project.find({}).sort({date:-1}).select({title: 1, uri: 1}).exec(function(err, projects) {
         if(err) return next();
-        res.locals.projects = projects;
+        res.locals.projectLinks = projects;
         console.log(projects);
+        next();
+    });
+});
+
+app.use(function(req, res, next) {
+    models.Repo.find({}).exec(function(err, repos) {
+        if(err) return next();
+        res.locals.repoLinks = repos;
         next();
     });
 });
