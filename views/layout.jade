@@ -1,7 +1,22 @@
 doctype html
 html(lang="en")
 	head
-		title="montyanderson.net"
+		title montyanderson.net
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css")
 
 	body
-		block content
+		nav.blue
+			.nav-wrapper.container
+				a.brand-logo(href="/") Monty Anderson
+				
+				ul.right.hide-on-med-and-down
+					li
+						a(href="/") Login
+					li
+						a(href="/") Home
+				
+				
+		.container.row
+			.col.s2 l
+			.col.s10
+				block content

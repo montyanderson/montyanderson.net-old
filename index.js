@@ -1,5 +1,7 @@
 const express = require("express");
+const redis = require("redis");
 
+global.db = redis.createClient();
 const app = express();
 
 app.set("view engine", "jade");
