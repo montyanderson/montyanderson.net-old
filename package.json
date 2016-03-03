@@ -1,0 +1,34 @@
+{
+  "name": "montyanderson.net",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/montyanderson/montyanderson.net.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/montyanderson/montyanderson.net/issues"
+  },
+  "homepage": "https://github.com/montyanderson/montyanderson.net#readme",
+  "devDependencies": {
+    "xo": "^0.12.1"
+  },
+  "xo": {
+    "rules": {
+      "quotes": [
+        2,
+        "double"
+      ]
+    }
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "jade": "^1.11.0"
+  }
+}
