@@ -25,11 +25,15 @@
         2,
         "double"
       ],
-      "space-before-function-paren": 0
+      "space-before-function-paren": 0,
+      "keyword-spacing": 0,
+      "camelcase": 0,
+      "curly": 0
     }
   },
   "dependencies": {
     "express": "^4.13.4",
+    "got": "^6.2.0",
     "jade": "^1.11.0",
     "redis": "^2.4.2"
   }
