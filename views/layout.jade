@@ -17,7 +17,8 @@ html(lang="en")
 				
 				
 		.container.row
-			.col.s2 
+			.col.s2
+				br
 				each repo in repos
 					a(href="https://github.com/" + repo.owner + "/" + repo.name)=repo.name
 					br
