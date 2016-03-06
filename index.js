@@ -72,4 +72,4 @@ app.get("/:owner/:repo", function(req, res, next) {
 });
 */
 
-app.listen(8080, "127.0.0.1");
+app.listen(process.env.PORT || 8080, process.env.IP "127.0.0.1");
