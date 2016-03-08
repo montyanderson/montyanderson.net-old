@@ -1,4 +1,5 @@
 "use strict";
+const path = require("path");
 const express = require("express");
 const redis = require("redis");
 
@@ -6,6 +7,8 @@ const db = global.db = redis.createClient();
 const app = express();
 
 app.set("view engine", "jade");
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(function(req, res, next) {
 	db.hkeys("repos", function(err, repos) {
@@ -57,19 +60,5 @@ app.get("/", function(req, res, next) {
 }, function(req, res) {
 	res.render("index");
 });
-
-/*
-app.get("/:owner/:repo", function(req, res, next) {
-	const key = req.params.owner + "/" + req.params.repo;
-
-	db.hget("repos", key, function(err, repo) {
-		res.locals.repo = JSON.parse(repo);
-		console.log(res.locals.repo);
-		next();
-	});
-}, function(req, res) {
-	res.render("repo");
-});
-*/
 
 app.listen(process.env.PORT || 8080, process.env.IP || "127.0.0.1");
