@@ -8,7 +8,7 @@ const app = express();
 
 app.set("view engine", "jade");
 
-app.use(express.static(path.join(__dirname, "public")));
+//app.use(express.static(path.join(__dirname, "public")));
 
 app.use(function(req, res, next) {
 	db.hkeys("repos", function(err, repos) {

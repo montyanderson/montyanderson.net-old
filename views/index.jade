@@ -7,7 +7,7 @@ block repo
 				span.card-title=repo.name
 				p=repo.description
 				span.red-text=repo.language
-			
+
 			.card-action.red
 				a(href=repo.html_url) Github
 
@@ -17,21 +17,16 @@ block content
 			.card
 				.card-image
 					img(src="https://avatars2.githubusercontent.com/u/3048503")
-		p.col.s12.m6.l8.flow-text Hello, I'm Monty Anderson! I'm a teenage developer interested Maths, server-side technologies, and crypto. I enjoy working 		on software that facilitates real-world freedom and liberty- particularly that which renders bulk collection of data by an adversary useless. I've attended 
-			a(href="http://www.yrs.io/") Young Rewired State 
+		p.col.s12.m6.l8.flow-text Hello, I'm Monty Anderson! I'm a teenage developer interested Maths, server-side technologies, and crypto. I enjoy working 		on software that facilitates real-world freedom and liberty- particularly that which renders bulk collection of data by an adversary useless. I've attended
+			a(href="http://www.yrs.io/") Young Rewired State
 			from 2011 until 2015 and continue to work on projects for the greater good.
-	
+
 	h3 Most Starred Projects
 	.row
 		each repo in starred
 			block repo
-	
+
 	h3 Latest Projects
 	.row
 		each repo in pushed
 			block repo
-
-	.row
-		img.col.s12(src="/i.png")
-		img.col.s12(src="/e.png")
-		
